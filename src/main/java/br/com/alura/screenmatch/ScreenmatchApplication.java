@@ -1,5 +1,6 @@
 package br.com.alura.screenmatch;
 
+import br.com.alura.screenmatch.service.APIConsumption;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,8 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("First Spring Project without web");
+		APIConsumption apiConsumption = new APIConsumption();
+		var json = apiConsumption.getData("https://www.omdbapi.com/?t=gilmore+girls&apikey=7ef332a9");
+		System.out.println(json);
 	}
 }
